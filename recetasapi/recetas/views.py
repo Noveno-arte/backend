@@ -11,8 +11,8 @@ class RecetaNueva(generics.CreateAPIView):
     def post(self,request,*args,**kwargs):
         titulo = request.data['titulo']
         imagen = request.data['imagen']
-        ingredientes = request.data['ingredientes'].split(',')
-        preparacion = request.data['preparacion'].split(',')
+        ingredientes = request.data['ingredientes'].split('<<separation>>')
+        preparacion = request.data['preparacion'].split('<<separation>>')
         Receta.objects.create(titulo=titulo,imagen=imagen,ingredientes=ingredientes,preparacion=preparacion)
         return HttpResponse({'message':'receta creada'},status=200)
 
@@ -36,8 +36,8 @@ class RecetaDetail(generics.RetrieveUpdateDestroyAPIView):
         _id = request.data['id']
         titulo = request.data['titulo']
         imagen = request.data['imagen']
-        ingredientes = request.data['ingredientes'].split(',')
-        preparacion = request.data['preparacion'].split(',')
+        ingredientes = request.data['ingredientes'].split('<<separation>>')
+        preparacion = request.data['preparacion'].split('<<separation>>')
 
         receta = Receta.objects.get(id=_id)
         
