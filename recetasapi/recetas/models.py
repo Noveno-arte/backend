@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Receta(models.Model):
     titulo = models.CharField(max_length=80)
-    imagen = models.CharField(max_length=120, default="https://i.blogs.es/87930e/comidas-ricas/1366_2000.jpg")
+    imagen = models.ImageField(upload_to="recetas",null=True,blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     ingredientes = models.JSONField()
     preparacion = models.JSONField()
